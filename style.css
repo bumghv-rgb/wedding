@@ -107,8 +107,6 @@ input, select, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; bo
     display: block; 
 }
 
-.hadir { background-color: #2e7d32; }       /* Hijau */
-.tidak-hadir { background-color: #c62828; } /* Merah */
 
 /* Form Styling */
 .wishes-form {
