@@ -97,6 +97,103 @@ input, select, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; bo
     color: #e0e0e0;
 }
 
+/* Update Bagian Gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: white;
+    padding: 10px; /* Jarak foto ke bingkai */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-bottom: 30px solid white; /* Kasih space bawah ala foto polaroid */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.gallery-item img {
+    width: 250px; /* Ukuran bisa lo sesuaikan */
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--gold); /* Bingkai emas tipis di dalem */
+}
+
+/* Responsif buat HP */
+@media (max-width: 600px) {
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.event-card, .gift-box, .story-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(176, 141, 87, 0.3); /* Warna gold tipis */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.event-card:hover, .gift-box:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(176, 141, 87, 0.15);
+}
+
+/* Cari bagian ini di style.css dan ganti/tambahin kodenya */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Jarak antar foto agak dirapetin dikit buat HP */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px; /* Biar nggak nempel banget ke pinggir layar */
+}
+
+.gallery-item {
+    background: white;
+    padding: 8px; 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-bottom: 20px solid white; /* Efek polaroid tetep ada */
+    transition: transform 0.3s ease;
+    flex: 0 1 calc(50% - 15px); /* Ini kuncinya: 50% dikurang gap */
+    max-width: calc(50% - 15px);
+}
+
+.gallery-item img {
+    width: 100%; /* Foto ngikutin lebar container */
+    height: 200px; /* Atur tinggi biar seragam, sesuaikan selera */
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--gold);
+}
+
+/* Biar pas di Laptop tetep normal (misal 4 foto per baris) */
+@media (min-width: 768px) {
+    .gallery-item {
+        flex: 0 1 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+    }
+    .gallery-item img {
+        height: 350px; /* Laptop fotonya lebih tinggi/gede */
+    }
+}
+
 /* Kotak Statistik */
 .rsvp-stats {
     display: flex;
