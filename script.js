@@ -32,18 +32,21 @@ function toggleMusic() {
 }
 
 
-// RSVP Handler
+// RSVP Handler (Update Formasi: Nama, Alamat, Ucapan)
 const rsvpForm = document.getElementById('rsvp-form');
 if (rsvpForm) {
     rsvpForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const nama = document.getElementById('input-nama').value;
         const alamat = document.getElementById('input-alamat').value;
+        const ucapan = document.getElementById('input-ucapan').value; 
         const hadir = document.getElementById('input-kehadiran').value;
-        const jumlah = document.getElementById('input-jumlah').value;
         
         if (hadir === 'Hadir') {
-            const isiQR = `Tamu: ${nama} | Alamat: ${alamat} | Porsi: ${jumlah}`;
+            // Label dihapus, formasi diurutkan: Nama, Alamat, Ucapan
+            // Pakai pemisah koma biar rapi pas dibaca scanner
+            const isiQR = `${nama}, ${alamat}, ${ucapan}`;
+            
             const urlQR = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(isiQR)}`;
             
             document.getElementById('qrcode-area').innerHTML = `<img src="${urlQR}" style="width:180px;">`;
@@ -55,6 +58,7 @@ if (rsvpForm) {
         rsvpForm.reset();
     });
 }
+
 
 // Modal & Copy
 function closeModal() { document.getElementById('qr-modal').style.display = 'none'; }
