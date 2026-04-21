@@ -17,16 +17,17 @@ function startWedding() {
     setTimeout(() => { overlay.style.display = "none"; }, 1200);
 }
 
-// Kontrol Musik
+// Kontrol Musik (Update Fix)
 function toggleMusic() {
     const song = document.getElementById("song");
     const mBtn = document.getElementById("m-btn");
+    
     if (song.paused) {
         song.play();
-        mBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        mBtn.innerHTML = "⏸"; // Muncul lagi pas diputar
     } else {
         song.pause();
-        mBtn.innerHTML = '<i class="fas fa-music"></i>';
+        mBtn.innerHTML = "▶"; // Berubah jadi play pas di-pause
     }
 }
 
