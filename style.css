@@ -14,6 +14,55 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Update Bagian Overlay agar fit di HP */
+#overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* Gunakan background-image dari HTML yang sebelumnya kita bahas */
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: white; 
+    z-index: 9999; 
+    text-align: center; 
+    padding: 20px; /* Kasih ruang biar gak nempel tembok */
+    transition: 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#overlay h1 { 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 3.5rem; /* Ukuran default lebih aman */
+    margin: 10px 0; 
+}
+
+/* Responsif khusus HP */
+@media (max-width: 480px) {
+    #overlay h1 { 
+        font-size: 2.8rem; /* Mengecil di HP biar gak makan tempat */
+    }
+    
+    #overlay p {
+        font-size: 0.9rem; /* Ukuran teks keterangan lebih proporsional */
+        margin: 5px 0;
+    }
+    
+    .u-text {
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+    }
+
+    .btn-open {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
+}
+
 /* OVERLAY COVER */
 #overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -27,17 +76,22 @@ body {
 #music-box { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: none; }
 .music-btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: var(--gold); color: white; cursor: pointer; font-size: 1.2rem; }
 
-section { padding: 100px 20px; text-align: center; }
+section { padding: 25px 20px; text-align: center; }
 .container { max-width: 1000px; margin: auto; }
 .bg-alt { background-color: #f0ede8; }
 .section-title { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold); margin-bottom: 40px; }
 
 .hero { 
-    height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1350&q=80') center/cover;
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    /* Pastikan baris di bawah ini ada agar foto tidak pecah/tertarik */
+    background-size: cover;
+    background-position: center; 
     color: white; 
 }
-.hero-content { background: rgba(0,0,0,0.4); padding: 50px; border-radius: 20px; backdrop-filter: blur(5px); }
+.hero-content { background: rgba(0,0,0,0.3); padding: 50px; border-radius: 20px; backdrop-filter: blur(0px); }
 .hero-content h2 { font-family: 'Great Vibes', cursive; font-size: 5.5rem; }
 
 /* MEMPELAI */
@@ -144,6 +198,33 @@ input, select, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; bo
     box-shadow: 0 15px 35px rgba(0,0,0,0.05);
     border-radius: 20px;
     transition: all 0.4s ease;
+}
+
+/* Container Maps agar responsif */
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 75%; /* Rasio tinggi peta di layar lebar */
+    position: relative;
+    height: 0;
+    border-radius: 15px; /* Biar sudutnya tumpul dan estetik */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 2px solid var(--gold); /* Tambahan bingkai emas tipis */
+}
+
+/* Pengaturan khusus untuk layar HP */
+@media (max-width: 480px) {
+    .map-responsive {
+        padding-bottom: 100%; /* Peta jadi kotak (1:1) di HP agar lebih jelas */
+    }
 }
 
 .event-card:hover, .gift-box:hover {
@@ -391,5 +472,22 @@ input, select, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; bo
     .time-box span { font-size: 1.4rem; }
 }
 
-/* FOOTER */
-.footer { padding: 50px; background: #222; color: #777; font-size: 0.9rem; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+    background: var(--cream);
+    overflow-x: hidden; /* Biar nggak ada scroll kanan kiri */
+    scroll-behavior: smooth;
+    
+    /* Tambahkan 3 baris ini */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.85rem;
+}
