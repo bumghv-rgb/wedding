@@ -68,6 +68,29 @@ function copyText(id) {
     navigator.clipboard.writeText(text).then(() => alert("Berhasil disalin: " + text));
 }
 
+// Hapus kode galeri lama, ganti dengan ini di paling bawah script.js
+Fancybox.bind('[data-fancybox="gallery"]', {
+  infinite: true, // Biar bisa geser terus gak mentok
+  Keyboard: {
+    Escape: "close",
+    Delete: "close",
+    Backspace: "close",
+    PageUp: "next",
+    PageDown: "prev",
+    ArrowLeft: "prev",
+    ArrowRight: "next",
+  },
+  Thumbs: {
+    autoStart: true, // Memunculkan foto-foto kecil di bawah[cite: 2]
+  },
+  Toolbar: {
+    display: {
+      left: ["infobar"],
+      middle: ["zoomIn", "zoomOut", "slideshow", "fullscreen"],
+      right: ["close"],
+    },
+  },
+});
 
 
 // Countdown
