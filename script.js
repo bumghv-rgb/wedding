@@ -17,42 +17,43 @@ function startWedding() {
     setTimeout(() => { overlay.style.display = "none"; }, 1200);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // 1. Ambil parameter "to" dari URL (misal: ?to=Budi+Santoso)
-    const urlParams = new URLSearchParams(window.location.search);
-    const namaTamu = urlParams.get('to');
-
-    if (namaTamu) {
-        // 2. Taruh di COVER (Overlay)
-        const displayNama = document.getElementById('guest-name');
-        if (displayNama) {
-            displayNama.innerText = namaTamu;
-        }
-
-        // 3. Taruh di INPUT RSVP (Daftar Kehadiran)
-        // Ini otomatis mengisi kolom "Nama Anda" di form bawah
-        const inputNama = document.getElementById('input-nama');
-        if (inputNama) {
-            inputNama.value = namaTamu;
-        }
+function startWedding() {
+    const song = document.getElementById("song");
+    const overlay = document.getElementById("overlay");
+    const mBox = document.getElementById("music-box");
+    const mBtn = document.getElementById("m-btn");
+    
+    if (song) {
+        song.play().catch(e => console.log("Autoplay blocked"));
+        // PENTING: Langsung aktifkan class musik
+        mBox.style.display = "flex";
+        mBox.classList.add("music-playing");
+        mBtn.style.animationPlayState = "running";
     }
-});
+    
+    overlay.style.transform = "translateY(-100%)";
+    document.body.style.overflow = "auto";
+    
+    setTimeout(() => { overlay.style.display = "none"; }, 1200);
+}
 
-
-// Kontrol Musik (Update Fix)
 function toggleMusic() {
     const song = document.getElementById("song");
     const mBtn = document.getElementById("m-btn");
+    const mBox = document.getElementById("music-box");
     
     if (song.paused) {
         song.play();
-        mBtn.innerHTML = "⏸"; // Muncul lagi pas diputar
+        mBtn.innerHTML = "🎵";
+        mBtn.style.animationPlayState = "running";
+        mBox.classList.add("music-playing");
     } else {
         song.pause();
-        mBtn.innerHTML = "▶"; // Berubah jadi play pas di-pause
+        mBtn.innerHTML = "▶";
+        mBtn.style.animationPlayState = "paused";
+        mBox.classList.remove("music-playing");
     }
 }
-
 
 // RSVP Handler (Update Formasi: Nama, Alamat, Ucapan)
 const rsvpForm = document.getElementById('rsvp-form');
