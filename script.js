@@ -17,6 +17,28 @@ function startWedding() {
     setTimeout(() => { overlay.style.display = "none"; }, 1200);
 }
 
+// Letakkan paling atas di script.js
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('to');
+
+    if (namaTamu) {
+        // Ganti tanda "+" menjadi spasi secara otomatis
+        const namaBersih = namaTamu.replace(/\+/g, ' '); 
+        
+        const displayNama = document.getElementById('guest-name');
+        if (displayNama) {
+            displayNama.innerText = namaBersih;
+        }
+        
+        // Agar di form RSVP nama Agus juga otomatis terisi
+        const inputNama = document.getElementById('input-nama');
+        if (inputNama) {
+            inputNama.value = namaBersih;
+        }
+    }
+});
+
 function startWedding() {
     const song = document.getElementById("song");
     const overlay = document.getElementById("overlay");
