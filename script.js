@@ -17,6 +17,28 @@ function startWedding() {
     setTimeout(() => { overlay.style.display = "none"; }, 1200);
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Ambil parameter "to" dari URL (misal: ?to=Budi+Santoso)
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('to');
+
+    if (namaTamu) {
+        // 2. Taruh di COVER (Overlay)
+        const displayNama = document.getElementById('guest-name');
+        if (displayNama) {
+            displayNama.innerText = namaTamu;
+        }
+
+        // 3. Taruh di INPUT RSVP (Daftar Kehadiran)
+        // Ini otomatis mengisi kolom "Nama Anda" di form bawah
+        const inputNama = document.getElementById('input-nama');
+        if (inputNama) {
+            inputNama.value = namaTamu;
+        }
+    }
+});
+
+
 // Kontrol Musik (Update Fix)
 function toggleMusic() {
     const song = document.getElementById("song");
